@@ -48,6 +48,11 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
         //newManagedObject.setValue(NSDate(), forKey: "timeStamp")
         newManagedObject.setValue("New Note", forKey: "body")
+        
+        //make a new blank object for title
+        newManagedObject.setValue(NSString(), forKey: "title")
+        
+        
         // Save the context.
         do {
             try context.save()
