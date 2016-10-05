@@ -120,7 +120,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     func configureCell(cell: UITableViewCell, withObject object: NSManagedObject) {
        // cell.textLabel!.text = object.valueForKey("timeStamp")?.description
-        cell.textLabel!.text = object.valueForKey("body") as? String
+        cell.textLabel!.text = object.valueForKey("title") as? String
+        cell.detailTextLabel!.text = object.valueForKey("body") as? String
         //cell.textLabel!.text = "New Note"
         
     }
