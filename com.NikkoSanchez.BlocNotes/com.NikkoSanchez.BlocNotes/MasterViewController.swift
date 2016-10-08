@@ -78,6 +78,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             }
         }
     }
+    
 
     // MARK: - Table View
 

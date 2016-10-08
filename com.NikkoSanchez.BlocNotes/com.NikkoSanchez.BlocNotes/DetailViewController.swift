@@ -22,7 +22,6 @@ class DetailViewController: UIViewController {
         }
     }
     
-    
     func saveNote() {
         let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
@@ -61,15 +60,30 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // add sharebutton programmatically to navigation bar
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(shareButton))
+        
         self.configureView()
         
+    }
+    
+    func shareButton() {
+        var itemsToShare = [String]()
+        let detail = self.detailItem
+        let noteTitle = detail?.valueForKey("title")!.description
+        let noteBody = detail?.valueForKey("body")!.description
+        itemsToShare.append(noteTitle!)
+        itemsToShare.append(noteBody!)
+        
+        let activityViewController:UIActivityViewController = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)
+        self.presentViewController(activityViewController, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
 }
 
