@@ -48,6 +48,11 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
         //newManagedObject.setValue(NSDate(), forKey: "timeStamp")
         newManagedObject.setValue("New Note", forKey: "body")
+        
+        //make a new blank object for title
+        newManagedObject.setValue(NSString(), forKey: "title")
+        
+        
         // Save the context.
         do {
             try context.save()
@@ -115,7 +120,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     func configureCell(cell: UITableViewCell, withObject object: NSManagedObject) {
        // cell.textLabel!.text = object.valueForKey("timeStamp")?.description
-        cell.textLabel!.text = object.valueForKey("body") as? String
+        cell.textLabel!.text = object.valueForKey("title") as? String
+        cell.detailTextLabel!.text = object.valueForKey("body") as? String
         //cell.textLabel!.text = "New Note"
         
     }

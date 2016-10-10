@@ -11,6 +11,7 @@ import UIKit
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var noteText: UITextField!
+    @IBOutlet weak var noteTitle: UITextField!
     
 
     var detailItem: AnyObject? {
@@ -30,6 +31,9 @@ class DetailViewController: UIViewController {
         
         detailItem?.setValue(noteText.text, forKey: "body")
         
+        //save title value
+        detailItem?.setValue(noteTitle.text, forKey: "title")
+        
         do {
             try managedContext.save()
             
@@ -43,6 +47,9 @@ class DetailViewController: UIViewController {
         if let detail = self.detailItem {
             if let note = self.noteText {
                 note.text = detail.valueForKey("body")!.description
+            }
+            if let title = self.noteTitle {
+                title.text = detail.valueForKey("title")?.description
             }
         }
     }

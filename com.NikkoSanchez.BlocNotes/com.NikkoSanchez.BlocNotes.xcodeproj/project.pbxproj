@@ -36,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B9281C3B1D9F81D4009413B2 /* com_NikkoSanchez_BlocNotes v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "com_NikkoSanchez_BlocNotes v2.xcdatamodel"; sourceTree = "<group>"; };
 		B9337F631D932A7400AA8807 /* com.NikkoSanchez.BlocNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = com.NikkoSanchez.BlocNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9337F661D932A7400AA8807 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9337F691D932A7400AA8807 /* com_NikkoSanchez_BlocNotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = com_NikkoSanchez_BlocNotes.xcdatamodel; sourceTree = "<group>"; };
@@ -492,6 +493,7 @@
 				B9337F921D932A7500AA8807 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B9337F931D932A7500AA8807 /* Build configuration list for PBXNativeTarget "com.NikkoSanchez.BlocNotesTests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +502,7 @@
 				B9337F951D932A7500AA8807 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B9337F961D932A7500AA8807 /* Build configuration list for PBXNativeTarget "com.NikkoSanchez.BlocNotesUITests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +511,7 @@
 				B9337F981D932A7500AA8807 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
@@ -515,9 +519,10 @@
 		B9337F681D932A7400AA8807 /* com_NikkoSanchez_BlocNotes.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				B9281C3B1D9F81D4009413B2 /* com_NikkoSanchez_BlocNotes v2.xcdatamodel */,
 				B9337F691D932A7400AA8807 /* com_NikkoSanchez_BlocNotes.xcdatamodel */,
 			);
-			currentVersion = B9337F691D932A7400AA8807 /* com_NikkoSanchez_BlocNotes.xcdatamodel */;
+			currentVersion = B9281C3B1D9F81D4009413B2 /* com_NikkoSanchez_BlocNotes v2.xcdatamodel */;
 			path = com_NikkoSanchez_BlocNotes.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
