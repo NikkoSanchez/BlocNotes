@@ -33,33 +33,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Write your note ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lga-yU-wTe" userLabel="Note Text">
-                                <rect key="frame" x="20" y="140" width="560" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title of this note" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5OH-OY-iDM" userLabel="Note Title">
                                 <rect key="frame" x="20" y="92" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Y6-26-Uxb">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Y6-26-Uxb">
                                 <rect key="frame" x="20" y="130" width="560" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ftp-wR-pzT" userLabel="Note Text">
+                                <rect key="frame" x="20" y="139" width="560" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Lga-yU-wTe" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" constant="76" id="Sqk-YR-5aQ"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="Lga-yU-wTe" secondAttribute="leading" id="bxc-f2-AA5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Lga-yU-wTe" secondAttribute="trailing" id="yaW-Kt-7kR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ftp-wR-pzT" secondAttribute="trailing" id="F1i-Th-jYP"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Ftp-wR-pzT" secondAttribute="leading" id="XA1-AI-xML"/>
+                            <constraint firstItem="Ftp-wR-pzT" firstAttribute="top" secondItem="1Y6-26-Uxb" secondAttribute="bottom" constant="8" id="bED-DD-JP9"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Note" id="dcg-Wh-Xcq"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="noteText" destination="Lga-yU-wTe" id="0PQ-Sh-VGu"/>
+                        <outlet property="noteText" destination="Ftp-wR-pzT" id="JXt-lO-cnv"/>
                         <outlet property="noteTitle" destination="5OH-OY-iDM" id="9dC-09-7im"/>
                     </connections>
                 </viewController>

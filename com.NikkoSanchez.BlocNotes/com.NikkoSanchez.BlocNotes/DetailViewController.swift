@@ -10,7 +10,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    @IBOutlet weak var noteText: UITextField!
+    
+    @IBOutlet weak var noteText: UITextView!
     @IBOutlet weak var noteTitle: UITextField!
     
 
