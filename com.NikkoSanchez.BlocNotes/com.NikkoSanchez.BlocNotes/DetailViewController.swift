@@ -25,7 +25,7 @@ class DetailViewController: UIViewController {
     
     func saveNote() {
         let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
+            UIApplication.shared.delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
         
@@ -46,15 +46,17 @@ class DetailViewController: UIViewController {
         // Update the user interface for the detail item.
         if let detail = self.detailItem {
             if let note = self.noteText {
-                note.text = detail.valueForKey("body")!.description
+                note.text = detail.value(forKey: "body") as? String
+                //note.text = (detail.value(forKey: "body") as AnyObject).description
             }
             if let title = self.noteTitle {
-                title.text = detail.valueForKey("title")?.description
+                title.text = detail.value(forKey: "title") as? String
+                //title.text = (detail.value(forKey: "title") as AnyObject).description
             }
         }
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         self.saveNote()
     }
 
@@ -63,7 +65,7 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         // add sharebutton programmatically to navigation bar
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(shareButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButton))
         
         self.configureView()
         
@@ -72,13 +74,13 @@ class DetailViewController: UIViewController {
     func shareButton() {
         var itemsToShare = [String]()
         let detail = self.detailItem
-        let noteTitle = detail?.valueForKey("title")!.description
-        let noteBody = detail?.valueForKey("body")!.description
+        let noteTitle = (detail?.value(forKey: "title")! as AnyObject).description
+        let noteBody = (detail?.value(forKey: "body")! as AnyObject).description
         itemsToShare.append(noteTitle!)
         itemsToShare.append(noteBody!)
         
         let activityViewController:UIActivityViewController = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)
-        self.presentViewController(activityViewController, animated: true, completion: nil)
+        self.present(activityViewController, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
