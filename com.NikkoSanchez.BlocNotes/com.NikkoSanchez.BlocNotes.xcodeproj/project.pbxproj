@@ -16,6 +16,9 @@
 		B9337F761D932A7400AA8807 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9337F741D932A7400AA8807 /* LaunchScreen.storyboard */; };
 		B9337F811D932A7500AA8807 /* com_NikkoSanchez_BlocNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9337F801D932A7500AA8807 /* com_NikkoSanchez_BlocNotesTests.swift */; };
 		B9337F8C1D932A7500AA8807 /* com_NikkoSanchez_BlocNotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9337F8B1D932A7500AA8807 /* com_NikkoSanchez_BlocNotesUITests.swift */; };
+		B9CE5F6F1DAF2561000273B7 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CE5F6E1DAF2561000273B7 /* ShareViewController.swift */; };
+		B9CE5F721DAF2561000273B7 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9CE5F701DAF2561000273B7 /* MainInterface.storyboard */; };
+		B9CE5F761DAF2561000273B7 /* BlocNotesShare.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B9CE5F6C1DAF2561000273B7 /* BlocNotesShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +36,28 @@
 			remoteGlobalIDString = B9337F621D932A7400AA8807;
 			remoteInfo = com.NikkoSanchez.BlocNotes;
 		};
+		B9CE5F741DAF2561000273B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9337F5B1D932A7400AA8807 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9CE5F6B1DAF2561000273B7;
+			remoteInfo = BlocNotesShare;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B9CE5F7A1DAF2561000273B7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B9CE5F761DAF2561000273B7 /* BlocNotesShare.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B9281C3B1D9F81D4009413B2 /* com_NikkoSanchez_BlocNotes v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "com_NikkoSanchez_BlocNotes v2.xcdatamodel"; sourceTree = "<group>"; };
@@ -52,6 +76,12 @@
 		B9337F871D932A7500AA8807 /* com.NikkoSanchez.BlocNotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = com.NikkoSanchez.BlocNotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9337F8B1D932A7500AA8807 /* com_NikkoSanchez_BlocNotesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = com_NikkoSanchez_BlocNotesUITests.swift; sourceTree = "<group>"; };
 		B9337F8D1D932A7500AA8807 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9CE5F6C1DAF2561000273B7 /* BlocNotesShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BlocNotesShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9CE5F6E1DAF2561000273B7 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		B9CE5F711DAF2561000273B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		B9CE5F731DAF2561000273B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9CE5F7B1DAF2578000273B7 /* com.NikkoSanchez.BlocNotes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = com.NikkoSanchez.BlocNotes.entitlements; sourceTree = "<group>"; };
+		B9CE5F7C1DAF2766000273B7 /* BlocNotesShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BlocNotesShare.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +106,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B9CE5F691DAF2561000273B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -85,6 +122,7 @@
 				B9337F651D932A7400AA8807 /* com.NikkoSanchez.BlocNotes */,
 				B9337F7F1D932A7500AA8807 /* com.NikkoSanchez.BlocNotesTests */,
 				B9337F8A1D932A7500AA8807 /* com.NikkoSanchez.BlocNotesUITests */,
+				B9CE5F6D1DAF2561000273B7 /* BlocNotesShare */,
 				B9337F641D932A7400AA8807 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,6 +133,7 @@
 				B9337F631D932A7400AA8807 /* com.NikkoSanchez.BlocNotes.app */,
 				B9337F7C1D932A7500AA8807 /* com.NikkoSanchez.BlocNotesTests.xctest */,
 				B9337F871D932A7500AA8807 /* com.NikkoSanchez.BlocNotesUITests.xctest */,
+				B9CE5F6C1DAF2561000273B7 /* BlocNotesShare.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,6 +141,7 @@
 		B9337F651D932A7400AA8807 /* com.NikkoSanchez.BlocNotes */ = {
 			isa = PBXGroup;
 			children = (
+				B9CE5F7B1DAF2578000273B7 /* com.NikkoSanchez.BlocNotes.entitlements */,
 				B9337F661D932A7400AA8807 /* AppDelegate.swift */,
 				B9337F6B1D932A7400AA8807 /* MasterViewController.swift */,
 				B9337F6D1D932A7400AA8807 /* DetailViewController.swift */,
@@ -132,6 +172,17 @@
 			path = com.NikkoSanchez.BlocNotesUITests;
 			sourceTree = "<group>";
 		};
+		B9CE5F6D1DAF2561000273B7 /* BlocNotesShare */ = {
+			isa = PBXGroup;
+			children = (
+				B9CE5F7C1DAF2766000273B7 /* BlocNotesShare.entitlements */,
+				B9CE5F6E1DAF2561000273B7 /* ShareViewController.swift */,
+				B9CE5F701DAF2561000273B7 /* MainInterface.storyboard */,
+				B9CE5F731DAF2561000273B7 /* Info.plist */,
+			);
+			path = BlocNotesShare;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -142,10 +193,12 @@
 				B9337F5F1D932A7400AA8807 /* Sources */,
 				B9337F601D932A7400AA8807 /* Frameworks */,
 				B9337F611D932A7400AA8807 /* Resources */,
+				B9CE5F7A1DAF2561000273B7 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B9CE5F751DAF2561000273B7 /* PBXTargetDependency */,
 			);
 			name = com.NikkoSanchez.BlocNotes;
 			productName = com.NikkoSanchez.BlocNotes;
@@ -188,19 +241,43 @@
 			productReference = B9337F871D932A7500AA8807 /* com.NikkoSanchez.BlocNotesUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		B9CE5F6B1DAF2561000273B7 /* BlocNotesShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9CE5F791DAF2561000273B7 /* Build configuration list for PBXNativeTarget "BlocNotesShare" */;
+			buildPhases = (
+				B9CE5F681DAF2561000273B7 /* Sources */,
+				B9CE5F691DAF2561000273B7 /* Frameworks */,
+				B9CE5F6A1DAF2561000273B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BlocNotesShare;
+			productName = BlocNotesShare;
+			productReference = B9CE5F6C1DAF2561000273B7 /* BlocNotesShare.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		B9337F5B1D932A7400AA8807 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Nikko;
 				TargetAttributes = {
 					B9337F621D932A7400AA8807 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = S855R3TGB6;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					B9337F7B1D932A7500AA8807 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -211,6 +288,16 @@
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0800;
 						TestTargetID = B9337F621D932A7400AA8807;
+					};
+					B9CE5F6B1DAF2561000273B7 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = S855R3TGB6;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -230,6 +317,7 @@
 				B9337F621D932A7400AA8807 /* com.NikkoSanchez.BlocNotes */,
 				B9337F7B1D932A7500AA8807 /* com.NikkoSanchez.BlocNotesTests */,
 				B9337F861D932A7500AA8807 /* com.NikkoSanchez.BlocNotesUITests */,
+				B9CE5F6B1DAF2561000273B7 /* BlocNotesShare */,
 			);
 		};
 /* End PBXProject section */
@@ -256,6 +344,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9CE5F6A1DAF2561000273B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9CE5F721DAF2561000273B7 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +385,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B9CE5F681DAF2561000273B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9CE5F6F1DAF2561000273B7 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -301,6 +405,11 @@
 			isa = PBXTargetDependency;
 			target = B9337F621D932A7400AA8807 /* com.NikkoSanchez.BlocNotes */;
 			targetProxy = B9337F881D932A7500AA8807 /* PBXContainerItemProxy */;
+		};
+		B9CE5F751DAF2561000273B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9CE5F6B1DAF2561000273B7 /* BlocNotesShare */;
+			targetProxy = B9CE5F741DAF2561000273B7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -319,6 +428,14 @@
 				B9337F751D932A7400AA8807 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B9CE5F701DAF2561000273B7 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B9CE5F711DAF2561000273B7 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -412,8 +529,14 @@
 		B9337F911D932A7500AA8807 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = com.NikkoSanchez.BlocNotes/com.NikkoSanchez.BlocNotes.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: David Sanchez (R7NBKB6HZQ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = S855R3TGB6;
 				INFOPLIST_FILE = com.NikkoSanchez.BlocNotes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.com-NikkoSanchez-BlocNotes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -424,8 +547,14 @@
 		B9337F921D932A7500AA8807 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = com.NikkoSanchez.BlocNotes/com.NikkoSanchez.BlocNotes.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Nikkolas Sanchez (S855R3TGB6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = S855R3TGB6;
 				INFOPLIST_FILE = com.NikkoSanchez.BlocNotes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.com-NikkoSanchez-BlocNotes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -483,6 +612,48 @@
 			};
 			name = Release;
 		};
+		B9CE5F771DAF2561000273B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = BlocNotesShare/BlocNotesShare.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Nikkolas Sanchez (S855R3TGB6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = S855R3TGB6;
+				INFOPLIST_FILE = BlocNotesShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.com-NikkoSanchez-BlocNotes.BlocNotesShare";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		B9CE5F781DAF2561000273B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = BlocNotesShare/BlocNotesShare.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Nikkolas Sanchez (S855R3TGB6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = S855R3TGB6;
+				INFOPLIST_FILE = BlocNotesShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.com-NikkoSanchez-BlocNotes.BlocNotesShare";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -521,6 +692,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		B9CE5F791DAF2561000273B7 /* Build configuration list for PBXNativeTarget "BlocNotesShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9CE5F771DAF2561000273B7 /* Debug */,
+				B9CE5F781DAF2561000273B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
