@@ -9,17 +9,31 @@
 import UIKit
 import CoreData
 
-class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating {
 
-    var detailViewController: DetailViewController? = nil
-    var managedObjectContext: NSManagedObjectContext? = nil
-
-
+    var detailViewController: DetailViewController?
+    var managedObjectContext: NSManagedObjectContext?
+    
+    var filteredNotes : [Notes]?
+    var searchPredicate : NSPredicate?
+    var searchController : UISearchController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem
-
+        
+        //Add search controller delegate
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.delegate = self
+        searchController.searchBar.delegate = self
+   //     searchController.searchBar.sizeToFit()
+        definesPresentationContext = true
+        self.tableView.tableHeaderView = searchController?.searchBar
+        self.tableView.delegate = self
+        
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
         self.navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
@@ -27,7 +41,25 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
     }
-
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchText = self.searchController?.searchBar.text
+        if let searchText = searchText {
+            searchPredicate = NSPredicate(format: "title contains[c] %@ OR body contains[c] %@", searchText, searchText)
+            
+            if let managedObjectContext = managedObjectContext {
+            let fetchRequest = NSFetchRequest<Notes>()
+            fetchRequest.entity = NSEntityDescription.entity(forEntityName: "Notes", in: managedObjectContext)
+            fetchRequest.predicate = searchPredicate
+            try? filteredNotes = managedObjectContext.fetch(fetchRequest)
+    
+            self.tableView.reloadData()
+            print(searchPredicate)
+            print(filteredNotes?.count)
+            }
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
         super.viewWillAppear(animated)
@@ -83,18 +115,41 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     // MARK: - Table View
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.fetchedResultsController.sections?.count ?? 0
+        if searchPredicate == nil{
+            return self.fetchedResultsController.sections?.count ?? 0
+        } else {
+            return 1
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = self.fetchedResultsController.sections![section]
-        return sectionInfo.numberOfObjects
+        if searchPredicate == nil{
+            let sectionInfo = self.fetchedResultsController.sections![section]
+            return sectionInfo.numberOfObjects
+        } else {
+            return filteredNotes?.count ?? 0
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let object = self.fetchedResultsController.object(at: indexPath) 
-        self.configureCell(cell, withObject: object)
+       // let blah = indexPath.row
+        //let notes: Notes
+        
+        if searchPredicate == nil {
+            let object = self.fetchedResultsController.object(at: indexPath)
+            self.configureCell(cell, withObject: object)
+        } else {
+            let note = filteredNotes?[indexPath.row]
+                cell.textLabel?.text = note?.title //notes.title
+                cell.detailTextLabel?.text = note?.body //notes.body
+        
+           
+            //print(notes)x
+            
+        }
+        //let object = self.fetchedResultsController.object(at: indexPath)
+        //self.configureCell(cell, withObject: object)
         return cell
     }
 
@@ -105,6 +160,16 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+           // var note : Notes
+          //  if searchPredicate == nil {
+          //      note = self.fetchedResultsController.object(at: indexPath) as! Notes
+         //   } else {
+          //      let filteredNotes = self.fetchedResultsController.fetchedObjects?.filter(){
+          //          return self.searchPredicate!.evaluate(with: $0)
+          //      }
+           //     note = filteredNotes![indexPath.row] as! Notes
+            //}
+            
             let context = self.fetchedResultsController.managedObjectContext
             context.delete(self.fetchedResultsController.object(at: indexPath) )
                 
@@ -129,12 +194,12 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     // MARK: - Fetched results controller
 
-    var fetchedResultsController: NSFetchedResultsController<NSManagedObject>! {
+    var fetchedResultsController: NSFetchedResultsController<Notes> {
         if _fetchedResultsController != nil {
             return _fetchedResultsController!
         }
         
-        let fetchRequest = NSFetchRequest<NSManagedObject>()
+        let fetchRequest = NSFetchRequest<Notes>()
         // Edit the entity name as appropriate.
         let entity = NSEntityDescription.entity(forEntityName: "Notes", in: self.managedObjectContext!)
         fetchRequest.entity = entity
@@ -149,7 +214,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "Master")
+        let aFetchedResultsController = NSFetchedResultsController<Notes>(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "Master")
         aFetchedResultsController.delegate = self
         _fetchedResultsController = aFetchedResultsController
         
@@ -164,7 +229,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         
         return _fetchedResultsController!
     }    
-    var _fetchedResultsController: NSFetchedResultsController<NSManagedObject>!//? = nil
+    var _fetchedResultsController: NSFetchedResultsController<Notes>? //!//? = nil
 
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView.beginUpdates()
@@ -195,9 +260,37 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
 
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.tableView.endUpdates()
+       // if self.searchPredicate == nil {
+            self.tableView.endUpdates()
+        //}
+        //else {
+         //   print("controller changed")
+          //  (self.searchController.searchResultsUpdater as! MasterViewController).tableView.endUpdates()
+       // }
     }
 
+    
+    // MARK: UISearchBar Shit
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        updateSearchResults(for: self.searchController)
+    }
+    
+    func didDismissSearchController(_ searchController: UISearchController) {
+        self.searchPredicate = nil
+        self.filteredNotes?.removeAll()
+        self.tableView.reloadData()
+    }
+    
+    func presentSearchController(_ searchController: UISearchController) {
+        print("PRESENT MOFUCKIN SEARCH CONTROLLER")
+    }
+    
+    func willPresentSearchController(_ searchController: UISearchController) {
+        print("WILL PRESENT THAT SHIT")
+    }
+    
+    
     /*
      // Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed.
      
