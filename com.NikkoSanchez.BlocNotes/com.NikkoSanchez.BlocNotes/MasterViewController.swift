@@ -133,23 +133,18 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-       // let blah = indexPath.row
-        //let notes: Notes
         
         if searchPredicate == nil {
             let object = self.fetchedResultsController.object(at: indexPath)
             self.configureCell(cell, withObject: object)
         } else {
-            let note = filteredNotes?[indexPath.row]
-                cell.textLabel?.text = note?.title //notes.title
-                cell.detailTextLabel?.text = note?.body //notes.body
-        
-           
-            //print(notes)x
             
+            let note = filteredNotes?[indexPath.row]
+                cell.textLabel?.text = note?.title
+                cell.detailTextLabel?.text = note?.body
+        
         }
-        //let object = self.fetchedResultsController.object(at: indexPath)
-        //self.configureCell(cell, withObject: object)
+
         return cell
     }
 
@@ -160,15 +155,6 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-           // var note : Notes
-          //  if searchPredicate == nil {
-          //      note = self.fetchedResultsController.object(at: indexPath) as! Notes
-         //   } else {
-          //      let filteredNotes = self.fetchedResultsController.fetchedObjects?.filter(){
-          //          return self.searchPredicate!.evaluate(with: $0)
-          //      }
-           //     note = filteredNotes![indexPath.row] as! Notes
-            //}
             
             let context = self.fetchedResultsController.managedObjectContext
             context.delete(self.fetchedResultsController.object(at: indexPath) )
@@ -185,10 +171,10 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
 
     func configureCell(_ cell: UITableViewCell, withObject object: NSManagedObject) {
-       // cell.textLabel!.text = object.valueForKey("timeStamp")?.description
+       
+        // cell.textLabel!.text = object.valueForKey("timeStamp")?.description
         cell.textLabel!.text = object.value(forKey: "title") as? String
         cell.detailTextLabel!.text = object.value(forKey: "body") as? String
-        //cell.textLabel!.text = "New Note"
         
     }
 
@@ -260,17 +246,12 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
 
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-       // if self.searchPredicate == nil {
+       
             self.tableView.endUpdates()
-        //}
-        //else {
-         //   print("controller changed")
-          //  (self.searchController.searchResultsUpdater as! MasterViewController).tableView.endUpdates()
-       // }
     }
 
     
-    // MARK: UISearchBar Shit
+    // MARK: UISearchBar
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         updateSearchResults(for: self.searchController)
@@ -283,11 +264,11 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
     
     func presentSearchController(_ searchController: UISearchController) {
-        print("PRESENT MOFUCKIN SEARCH CONTROLLER")
+        print("PRESENT CONTROLLER")
     }
     
     func willPresentSearchController(_ searchController: UISearchController) {
-        print("WILL PRESENT THAT SHIT")
+        print("WILL PRESENT")
     }
     
     
