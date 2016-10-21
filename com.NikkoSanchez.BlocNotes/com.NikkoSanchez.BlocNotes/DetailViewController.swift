@@ -47,13 +47,14 @@ class DetailViewController: UIViewController {
         if let detail = self.detailItem {
             if let note = self.noteText {
                 note.text = detail.value(forKey: "body") as? String
-                //note.text = (detail.value(forKey: "body") as AnyObject).description
             }
             if let title = self.noteTitle {
                 title.text = detail.value(forKey: "title") as? String
                 //title.text = (detail.value(forKey: "title") as AnyObject).description
             }
+            
         }
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -69,7 +70,29 @@ class DetailViewController: UIViewController {
         
         self.configureView()
         
+        let tapToEdit = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.tapFunction))
+        tapToEdit.numberOfTapsRequired = 1
+        noteText.addGestureRecognizer(tapToEdit)
+        
+        let tapToEnd = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.tapToEndFunction))
+        tapToEnd.numberOfTapsRequired = 2
+        noteTitle.addGestureRecognizer(tapToEnd)
+        
     }
+    
+    // add tapFunction
+    func tapFunction(sender: UITapGestureRecognizer) {
+        noteText.isEditable = true
+    }
+    
+    func tapToEndFunction(sender: UITapGestureRecognizer) {
+        noteText.isEditable = false
+    }
+    
+    /*func textViewDidEndEditing(_ textView: UITextView) {
+        resignFirstResponder()
+    }
+    */
     
     func shareButton() {
         var itemsToShare = [String]()
@@ -82,6 +105,28 @@ class DetailViewController: UIViewController {
         let activityViewController:UIActivityViewController = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: nil)
     }
+    
+  /*  func NSTextCheckingTypesFromUIDataDetectorTypes(dataDetectorTypes: UIDataDetectorTypes) -> NSTextCheckingTypes {
+        var textCheckingType: NSTextCheckingResult.CheckingType = []
+        
+        if dataDetectorTypes.contains(.address){
+            textCheckingType.insert(.address)
+        }
+        
+        if dataDetectorTypes.contains(.link){
+            textCheckingType.insert(.link)
+        }
+        
+        if dataDetectorTypes.contains(.calendarEvent){
+            textCheckingType.insert(.date)
+        }
+        
+        if dataDetectorTypes.contains(.phoneNumber){
+            textCheckingType.insert(.phoneNumber)
+        }
+        
+        return textCheckingType.rawValue
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
