@@ -27,7 +27,6 @@ class DetailViewController: UIViewController {
         let appDelegate =
             UIApplication.shared.delegate as! AppDelegate
         
-        let managedContext = appDelegate.managedObjectContext
         
         detailItem?.setValue(noteText.text, forKey: "body")
         
@@ -35,7 +34,7 @@ class DetailViewController: UIViewController {
         detailItem?.setValue(noteTitle.text, forKey: "title")
         
         do {
-            try managedContext.save()
+            appDelegate.saveContext()
             
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
