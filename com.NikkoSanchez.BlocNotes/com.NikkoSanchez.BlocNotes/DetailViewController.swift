@@ -10,7 +10,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    @IBOutlet weak var noteText: UITextField!
+    
+    @IBOutlet weak var noteText: UITextView!
     @IBOutlet weak var noteTitle: UITextField!
     
 
@@ -22,10 +23,9 @@ class DetailViewController: UIViewController {
         }
     }
     
-    
     func saveNote() {
         let appDelegate =
-            UIApplication.sharedApplication().delegate as! AppDelegate
+            UIApplication.shared.delegate as! AppDelegate
         
         let managedContext = appDelegate.managedObjectContext
         
@@ -46,30 +46,92 @@ class DetailViewController: UIViewController {
         // Update the user interface for the detail item.
         if let detail = self.detailItem {
             if let note = self.noteText {
-                note.text = detail.valueForKey("body")!.description
+                note.text = detail.value(forKey: "body") as? String
             }
             if let title = self.noteTitle {
-                title.text = detail.valueForKey("title")?.description
+                title.text = detail.value(forKey: "title") as? String
+                //title.text = (detail.value(forKey: "title") as AnyObject).description
             }
+            
         }
+        
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         self.saveNote()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // add sharebutton programmatically to navigation bar
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButton))
+        
         self.configureView()
         
+        let tapToEdit = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.tapFunction))
+        tapToEdit.numberOfTapsRequired = 1
+        noteText.addGestureRecognizer(tapToEdit)
+        
+        let tapToEnd = UITapGestureRecognizer(target: self, action: #selector(DetailViewController.tapToEndFunction))
+        tapToEnd.numberOfTapsRequired = 2
+        noteTitle.addGestureRecognizer(tapToEnd)
+        
     }
+    
+    // add tapFunction
+    func tapFunction(sender: UITapGestureRecognizer) {
+        noteText.isEditable = true
+    }
+    
+    func tapToEndFunction(sender: UITapGestureRecognizer) {
+        noteText.isEditable = false
+    }
+    
+    /*func textViewDidEndEditing(_ textView: UITextView) {
+        resignFirstResponder()
+    }
+    */
+    
+    func shareButton() {
+        var itemsToShare = [String]()
+        let detail = self.detailItem
+        let noteTitle = (detail?.value(forKey: "title")! as AnyObject).description
+        let noteBody = (detail?.value(forKey: "body")! as AnyObject).description
+        itemsToShare.append(noteTitle!)
+        itemsToShare.append(noteBody!)
+        
+        let activityViewController:UIActivityViewController = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+  /*  func NSTextCheckingTypesFromUIDataDetectorTypes(dataDetectorTypes: UIDataDetectorTypes) -> NSTextCheckingTypes {
+        var textCheckingType: NSTextCheckingResult.CheckingType = []
+        
+        if dataDetectorTypes.contains(.address){
+            textCheckingType.insert(.address)
+        }
+        
+        if dataDetectorTypes.contains(.link){
+            textCheckingType.insert(.link)
+        }
+        
+        if dataDetectorTypes.contains(.calendarEvent){
+            textCheckingType.insert(.date)
+        }
+        
+        if dataDetectorTypes.contains(.phoneNumber){
+            textCheckingType.insert(.phoneNumber)
+        }
+        
+        return textCheckingType.rawValue
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
 }
 

@@ -16,6 +16,7 @@
 		B9337F761D932A7400AA8807 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9337F741D932A7400AA8807 /* LaunchScreen.storyboard */; };
 		B9337F811D932A7500AA8807 /* com_NikkoSanchez_BlocNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9337F801D932A7500AA8807 /* com_NikkoSanchez_BlocNotesTests.swift */; };
 		B9337F8C1D932A7500AA8807 /* com_NikkoSanchez_BlocNotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9337F8B1D932A7500AA8807 /* com_NikkoSanchez_BlocNotesUITests.swift */; };
+		B9CE5F8C1DB58FC4000273B7 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CE5F8B1DB58FC4000273B7 /* Notes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		B9337F871D932A7500AA8807 /* com.NikkoSanchez.BlocNotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = com.NikkoSanchez.BlocNotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9337F8B1D932A7500AA8807 /* com_NikkoSanchez_BlocNotesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = com_NikkoSanchez_BlocNotesUITests.swift; sourceTree = "<group>"; };
 		B9337F8D1D932A7500AA8807 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9CE5F8B1DB58FC4000273B7 /* Notes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			children = (
 				B9337F661D932A7400AA8807 /* AppDelegate.swift */,
 				B9337F6B1D932A7400AA8807 /* MasterViewController.swift */,
+				B9CE5F8B1DB58FC4000273B7 /* Notes.swift */,
 				B9337F6D1D932A7400AA8807 /* DetailViewController.swift */,
 				B9337F6F1D932A7400AA8807 /* Main.storyboard */,
 				B9337F721D932A7400AA8807 /* Assets.xcassets */,
@@ -200,13 +203,16 @@
 				TargetAttributes = {
 					B9337F621D932A7400AA8807 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 					B9337F7B1D932A7500AA8807 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = B9337F621D932A7400AA8807;
 					};
 					B9337F861D932A7500AA8807 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = B9337F621D932A7400AA8807;
 					};
 				};
@@ -264,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9337F671D932A7400AA8807 /* AppDelegate.swift in Sources */,
+				B9CE5F8C1DB58FC4000273B7 /* Notes.swift in Sources */,
 				B9337F6A1D932A7400AA8807 /* com_NikkoSanchez_BlocNotes.xcdatamodeld in Sources */,
 				B9337F6C1D932A7400AA8807 /* MasterViewController.swift in Sources */,
 				B9337F6E1D932A7400AA8807 /* DetailViewController.swift in Sources */,
@@ -410,10 +417,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = com.NikkoSanchez.BlocNotes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.com-NikkoSanchez-BlocNotes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -421,10 +431,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = com.NikkoSanchez.BlocNotes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.com-NikkoSanchez-BlocNotes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -436,6 +448,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.com-NikkoSanchez-BlocNotesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/com.NikkoSanchez.BlocNotes.app/com.NikkoSanchez.BlocNotes";
 			};
 			name = Debug;
@@ -448,6 +461,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.com-NikkoSanchez-BlocNotesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/com.NikkoSanchez.BlocNotes.app/com.NikkoSanchez.BlocNotes";
 			};
 			name = Release;
@@ -459,6 +473,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.com-NikkoSanchez-BlocNotesUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = com.NikkoSanchez.BlocNotes;
 			};
 			name = Debug;
@@ -470,6 +485,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.com-NikkoSanchez-BlocNotesUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = com.NikkoSanchez.BlocNotes;
 			};
 			name = Release;
